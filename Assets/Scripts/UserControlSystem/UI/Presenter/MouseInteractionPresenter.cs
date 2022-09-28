@@ -8,6 +8,8 @@ public sealed class MouseInteractionPresenter : MonoBehaviour
     [SerializeField] private Camera _camera;
     [SerializeField] private SelectableValue _selectedObject;
 
+    private ISelectable _previousGameObject;
+
     private void Update()
     {
         if (!Input.GetMouseButtonUp(0))
@@ -22,5 +24,9 @@ public sealed class MouseInteractionPresenter : MonoBehaviour
         var selectable = hits
             .Select(hit => hit.collider.GetComponentInParent<ISelectable>())
             .FirstOrDefault(c => c != null);
+        _previousGameObject?.EnableOutline(false);
+        _selectedObject.SetValue(selectable);
+        _previousGameObject = selectable;
+        selectable?.EnableOutline(true);
     }
 }

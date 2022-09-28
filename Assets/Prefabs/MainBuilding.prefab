@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 7059888821843421897}
   - component: {fileID: 7059888821823127145}
   - component: {fileID: 1055281450904324038}
+  - component: {fileID: 7395838910851043586}
   m_Layer: 0
   m_Name: MainBuilding
   m_TagString: Untagged
@@ -125,6 +126,24 @@ MonoBehaviour:
   _unitsParent: {fileID: 0}
   _maxHealth: 1000
   _icon: {fileID: 21300000, guid: 712262adeebd1924cad36360993fca8a, type: 3}
+--- !u!114 &7395838910851043586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7059888821843654377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &7059888821843654379
 GameObject:
   m_ObjectHideFlags: 0
