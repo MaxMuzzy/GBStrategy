@@ -17,6 +17,8 @@ public sealed class MouseInteractionPresenter : MonoBehaviour
 
     private Plane _groundPlane;
 
+    [SerializeField] private AttackableValue _attackablesRMB;
+
     private void Start() => _groundPlane = new Plane(_groundTransform.up, 0);
 
     private void Update()
@@ -30,28 +32,39 @@ public sealed class MouseInteractionPresenter : MonoBehaviour
             return;
         }
         var ray = _camera.ScreenPointToRay(Input.mousePosition);
+        var hits = Physics.RaycastAll(ray);
         if (Input.GetMouseButtonUp(0))
         {
             _selectedObject.SetValue(null);
-            var hits = Physics.RaycastAll(_camera.ScreenPointToRay(Input.mousePosition));
-            if (hits.Length == 0)
+            if (ItHit<ISelectable>(hits, out var selectable))
             {
-                return;
+                _previousGameObject?.EnableOutline(false);
+                _selectedObject.SetValue(selectable);
+                _previousGameObject = selectable;
+                selectable?.EnableOutline(true);
             }
-            var selectable = hits
-                .Select(hit => hit.collider.GetComponentInParent<ISelectable>())
-                .FirstOrDefault(c => c != null);
-            _previousGameObject?.EnableOutline(false);
-            _selectedObject.SetValue(selectable);
-            _previousGameObject = selectable;
-            selectable?.EnableOutline(true);
         }
         else
         {
-            if (_groundPlane.Raycast(ray, out var enter))
+            if (ItHit<IAttackable>(hits, out var attackable))
+            {
+                _attackablesRMB.SetValue(attackable);
+            }
+            else if (_groundPlane.Raycast(ray, out var enter))
             {
                 _groundClicksRMB.SetValue(ray.origin + ray.direction * enter);
             }
         }
+
+    }
+    private bool ItHit<T>(RaycastHit[] hits, out T result) where T : class
+    {
+        result = default;
+        if (hits.Length == 0)
+        {
+            return false;
+        }
+        result = hits.Select(hit => hit.collider.GetComponentInParent<T>()).Where(c => c != null).FirstOrDefault();
+        return result != default;
     }
 }

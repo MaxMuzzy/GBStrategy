@@ -5,7 +5,5 @@ using Abstractions.Commands.CommandsInterfaces;
 public class PatrolCommandExecutor : CommandExecutorBase<IPatrolCommand>
 {
     public override void ExecuteSpecificCommand(IPatrolCommand command)
-    {
-        Debug.Log("Patrol command executed");
-    }
+        => Debug.Log($"{name} is patrolling from {command.From} to {command.To}");
 }
