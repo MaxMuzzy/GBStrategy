@@ -7,26 +7,11 @@ using Zenject;
 
 namespace UserControlSystem
 {
-    public sealed class PatrolCommandCommandCreator : CommandCreatorBase<IPatrolCommand>
+    public sealed class PatrolCommandCommandCreator : CancellableCommandCreatorBase<IPatrolCommand, Vector3>
     {
-        [Inject] private AssetsContext _context;
         [Inject] private SelectableValue _selectable;
-        private Action<IPatrolCommand> _creationCallback;
-        [Inject]
-        private void Init(Vector3Value groundClicks) => groundClicks.OnNewValue += ONNewValue;
-        private void ONNewValue(Vector3 groundClick)
-        {
-            _creationCallback?.Invoke(_context.Inject(new PatrolCommand(groundClick, _selectable.CurrentValue.StartPoint.position)));
-            _creationCallback = null;
-        }
-        protected override void ClassSpecificCommandCreation(Action<IPatrolCommand> creationCallback)
-        {
-            _creationCallback = creationCallback;
-        }
-        public override void ProcessCancel()
-        {
-            base.ProcessCancel();
-            _creationCallback = null;
-        }
+
+        protected override IPatrolCommand CreateCommand(Vector3 argument)
+            => new PatrolCommand(_selectable.CurrentValue.StartPoint.position, argument);
     }
 }
