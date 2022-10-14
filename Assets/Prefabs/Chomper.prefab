@@ -59,7 +59,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2732fe64dd2799f439fb845921df626b, type: 3}
       propertyPath: m_RootOrder
-      value: -1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2732fe64dd2799f439fb845921df626b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stop: {fileID: 4123068953741457597}
   _animator: {fileID: 6215443247679936759}
+  _stopCommandExecutor: {fileID: 9103160271767819148}
 --- !u!114 &4123068953741457597
 MonoBehaviour:
   m_ObjectHideFlags: 0
