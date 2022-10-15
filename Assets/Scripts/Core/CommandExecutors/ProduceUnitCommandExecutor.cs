@@ -4,6 +4,8 @@ using Abstractions.Commands;
 using Abstractions.Commands.CommandsInterfaces;
 using UniRx;
 using Core;
+using System.Threading.Tasks;
+using Zenject;
 
 public class ProduceUnitCommandExecutor : CommandExecutorBase<IProduceUnitCommand>, IUnitProducer
 {
@@ -13,6 +15,8 @@ public class ProduceUnitCommandExecutor : CommandExecutorBase<IProduceUnitComman
     [SerializeField] private int _maximumUnitsInQueue = 6;
 
     private ReactiveCollection<IUnitProductionTask> _queue = new();
+
+    [Inject] private DiContainer _diContainer;
 
     private void Start() => Observable.EveryUpdate().Subscribe(_ => OnUpdate());
     private void OnUpdate()
@@ -27,7 +31,7 @@ public class ProduceUnitCommandExecutor : CommandExecutorBase<IProduceUnitComman
         if (innerTask.TimeLeft <= 0)
         {
             RemoveTaskAtIndex(0);
-            Instantiate(innerTask.UnitPrefab, new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)), Quaternion.identity, _unitsParent);
+            _diContainer.InstantiatePrefab(innerTask.UnitPrefab, new Vector3(Random.Range(-10, 10), 0,Random.Range(-10, 10)), Quaternion.identity, _unitsParent);
         }
     }
     public void Cancel(int index) => RemoveTaskAtIndex(index);
@@ -40,7 +44,7 @@ public class ProduceUnitCommandExecutor : CommandExecutorBase<IProduceUnitComman
         }
         _queue.RemoveAt(_queue.Count - 1);
     }
-    public override void ExecuteSpecificCommand(IProduceUnitCommand command)
+    public override async Task ExecuteSpecificCommand(IProduceUnitCommand command)
     {
         if(_queue.Count == _maximumUnitsInQueue)
         {

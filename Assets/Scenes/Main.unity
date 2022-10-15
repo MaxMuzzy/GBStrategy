@@ -389,6 +389,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7458630223254628724, guid: c1248dfc36ba2314a9a67cfc6fc19982, type: 3}
+      propertyPath: _installerPrefabs.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: c1248dfc36ba2314a9a67cfc6fc19982, type: 3}
@@ -902,6 +906,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 1834126935}
     m_Modifications:
+    - target: {fileID: 1055281450904324038, guid: 126a00765a7cfaf44b8d564793ef7de9, type: 3}
+      propertyPath: _unitsParent
+      value: 
+      objectReference: {fileID: 1748817644}
     - target: {fileID: 7059888821843421897, guid: 126a00765a7cfaf44b8d564793ef7de9, type: 3}
       propertyPath: m_RootOrder
       value: -1

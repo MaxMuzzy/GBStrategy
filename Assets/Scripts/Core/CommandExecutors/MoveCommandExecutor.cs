@@ -1,11 +1,11 @@
 using Abstractions.Commands.CommandsInterfaces;
-using Core;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Threading;
 using Utils;
+using System.Threading.Tasks;
 
-namespace Abstractions.Commands.CommandExecutors
+namespace Core.CommandExecutors
 {
     public class MoveCommandExecutor : CommandExecutorBase<IMoveCommand>
     {
@@ -16,7 +16,7 @@ namespace Abstractions.Commands.CommandExecutors
 
         [SerializeField] private StopCommandExecutor _stopCommandExecutor;
 
-        public override async void ExecuteSpecificCommand(IMoveCommand command)
+        public override async Task ExecuteSpecificCommand(IMoveCommand command)
         {
             GetComponent<NavMeshAgent>().destination = command.Target;
             _animator.SetTrigger(Walk);
