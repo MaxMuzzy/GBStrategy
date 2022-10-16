@@ -6,6 +6,7 @@ using UniRx;
 using Core;
 using System.Threading.Tasks;
 using Zenject;
+using Core.CommandRealizationDupes;
 
 public class ProduceUnitCommandExecutor : CommandExecutorBase<IProduceUnitCommand>, IUnitProducer
 {
@@ -31,7 +32,10 @@ public class ProduceUnitCommandExecutor : CommandExecutorBase<IProduceUnitComman
         if (innerTask.TimeLeft <= 0)
         {
             RemoveTaskAtIndex(0);
-            _diContainer.InstantiatePrefab(innerTask.UnitPrefab, new Vector3(Random.Range(-10, 10), 0,Random.Range(-10, 10)), Quaternion.identity, _unitsParent);
+            var unit = _diContainer.InstantiatePrefab(innerTask.UnitPrefab, new Vector3(Random.Range(-10, 10), 0,Random.Range(-10, 10)), Quaternion.identity, _unitsParent);
+            var queue = unit.GetComponent<ICommandQueue>();
+            var mainBuilding = GetComponent<MainBuilding>();
+            queue.AddCommandToQueue(new MoveCommand(mainBuilding.Venue));
         }
     }
     public void Cancel(int index) => RemoveTaskAtIndex(index);

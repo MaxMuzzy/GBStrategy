@@ -21,7 +21,9 @@ namespace UserControlSystem
                 .To<PatrolCommandCommandCreator>().AsTransient();
             Container.Bind<CommandCreatorBase<IStopCommand>>()
                 .To<StopCommandCommandCreator>().AsTransient();
-
+            Container.Bind<CommandCreatorBase<ISetVenueCommand>>()
+                .To<SetVenueCommandCommandCreator>().AsTransient();
+            
             Container.Bind<CommandButtonsModel>().AsSingle();
 
             Container.Bind<float>().WithId("Chomper").FromInstance(5f);
