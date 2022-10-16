@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _unitsParent: {fileID: 0}
-  _maximumUnitsInQueue: 6
+  _maximumUnitsInQueue: 5
 --- !u!114 &4437289910601314112
 MonoBehaviour:
   m_ObjectHideFlags: 0

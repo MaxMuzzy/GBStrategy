@@ -22,6 +22,7 @@ public sealed class MainBuilding : MonoBehaviour, ISelectable, IAttackable, IVen
     {
         _health = _maxHealth;
         _startPoint = transform;
+        Venue = transform.position;
     }
 
     public void EnableOutline(bool isEnable)
