@@ -1,12 +1,13 @@
 using Abstractions;
 using UnityEngine;
 
-public sealed class MainBuilding : MonoBehaviour, ISelectable, IAttackable
+public sealed class MainBuilding : MonoBehaviour, ISelectable, IAttackable, IVenue
 {
     public float Health => _health;
     public float MaxHealth => _maxHealth;
     public Sprite Icon => _icon;
     public Transform StartPoint => _startPoint;
+    public Vector3 Venue { get; set; }
 
     [SerializeField] private Transform _unitsParent;
 
@@ -21,6 +22,7 @@ public sealed class MainBuilding : MonoBehaviour, ISelectable, IAttackable
     {
         _health = _maxHealth;
         _startPoint = transform;
+        Venue = transform.position;
     }
 
     public void EnableOutline(bool isEnable)

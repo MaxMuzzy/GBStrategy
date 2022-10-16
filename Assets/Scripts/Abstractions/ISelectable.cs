@@ -2,10 +2,9 @@
 
 namespace Abstractions
 {
-    public interface ISelectable : IHealth
+    public interface ISelectable : IHealth, IIconHolder
     {
         Transform StartPoint { get; }
-        Sprite Icon { get; }
         void EnableOutline(bool var);
     }
 }
