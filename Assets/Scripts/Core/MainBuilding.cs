@@ -1,7 +1,7 @@
 using Abstractions;
 using UnityEngine;
 
-public sealed class MainBuilding : MonoBehaviour, ISelectable, IVenue
+public sealed class MainBuilding : MonoBehaviour, ISelectable, IVenue, IAttackable
 {
     public float Health => _health;
     public float MaxHealth => _maxHealth;
@@ -29,5 +29,14 @@ public sealed class MainBuilding : MonoBehaviour, ISelectable, IVenue
     {
         var outline = gameObject.GetComponent<Outline>();
         outline.enabled = isEnable;
+    }
+
+    public void ReceiveDamage(int amount)
+    {
+        if (_health <= 0)
+            return;
+        _health -= amount;
+        if (_health <= 0)
+            Destroy(gameObject, 1f);
     }
 }
