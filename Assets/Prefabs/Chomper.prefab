@@ -134,7 +134,7 @@ PrefabInstance:
     - target: {fileID: 9500000, guid: 2732fe64dd2799f439fb845921df626b, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 1de0c63d832ad5945ad553d3b2593424, type: 2}
+      objectReference: {fileID: 9100000, guid: 5540b6d81500fa34bb65bdedd320d7cf, type: 2}
     m_RemovedComponents: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 400002, guid: 2732fe64dd2799f439fb845921df626b, type: 3}
@@ -203,6 +203,18 @@ MonoBehaviour:
   _stop: {fileID: 4123068953741457597}
   _animator: {fileID: 6215443247679936759}
   _stopCommandExecutor: {fileID: 9103160271767819148}
+--- !u!114 &3697145097394921923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6215443247670586165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47691099e46b9d14f94d9f1eec0c88d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4123068953741457597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +253,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5063821803865388657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6215443247670586165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a111dd449c48b0941bf5383d82a178d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _factionId: 2
 --- !u!114 &5902467768640673250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,6 +278,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 320b4cfd21c1b1b4995e43b6fb73bafe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stop: {fileID: 4123068953741457597}
+  _animator: {fileID: 6215443247679936759}
+  _stopCommandExecutor: {fileID: 9103160271767819148}
 --- !u!114 &7458630223254628724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,6 +296,7 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 267192462}
+  - {fileID: 3697145097394921923}
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 0}
@@ -283,8 +312,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 237bacad47368c6408fd482b9754f220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 6215443247679936759}
+  _stopCommand: {fileID: 9103160271767819148}
   _maxHealth: 200
   _icon: {fileID: 21300000, guid: 9908913e928c42d4f9f1891893bbc424, type: 3}
+  _damage: 25
 --- !u!114 &8588491751645021483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,6 +329,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65f21dae41304ea4b896969b9a3e12b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 6215443247679936759}
+  _stopCommandExecutor: {fileID: 9103160271767819148}
 --- !u!114 &9103160271767819148
 MonoBehaviour:
   m_ObjectHideFlags: 0

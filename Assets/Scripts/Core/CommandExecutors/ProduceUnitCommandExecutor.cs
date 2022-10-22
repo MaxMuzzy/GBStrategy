@@ -35,6 +35,8 @@ public class ProduceUnitCommandExecutor : CommandExecutorBase<IProduceUnitComman
             var unit = _diContainer.InstantiatePrefab(innerTask.UnitPrefab, new Vector3(Random.Range(-10, 10), 0,Random.Range(-10, 10)), Quaternion.identity, _unitsParent);
             var queue = unit.GetComponent<ICommandQueue>();
             var mainBuilding = GetComponent<MainBuilding>();
+            var factionMember = unit.GetComponent<FactionMember>();
+            factionMember.SetFaction(GetComponent<FactionMember>().FactionId);
             queue.AddCommandToQueue(new MoveCommand(mainBuilding.Venue));
         }
     }
