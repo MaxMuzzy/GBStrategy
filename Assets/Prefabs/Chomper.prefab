@@ -278,6 +278,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 320b4cfd21c1b1b4995e43b6fb73bafe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stop: {fileID: 4123068953741457597}
+  _animator: {fileID: 6215443247679936759}
+  _stopCommandExecutor: {fileID: 9103160271767819148}
 --- !u!114 &7458630223254628724
 MonoBehaviour:
   m_ObjectHideFlags: 0
